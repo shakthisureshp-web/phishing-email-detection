@@ -1,0 +1,400 @@
+"""
+PhishGuard - Labeled Dataset of Phishing and Legitimate Emails
+Contains labeled email examples with diverse attack vectors (credential harvesting,
+BEC/CEO fraud, account suspension panic, fake invoices, 2FA bypass) and legitimate
+corporate, personal, and administrative communications.
+"""
+
+EMAILS_DATASET = [
+    # --- PHISHING EMAILS (label: 1) ---
+    {
+        "id": "phish-001",
+        "label": 1,
+        "type": "Credential Harvesting",
+        "sender": "service-security@paypal-update-alert.xyz",
+        "subject": "URGENT: Your PayPal Account Has Been Suspended - Action Required Immediately",
+        "body": "Dear Valued Customer, We detected unauthorized login attempts from IP 185.220.101.5 on your PayPal account. For your security, your account has been temporarily locked. You must verify your identity within 24 hours to prevent permanent termination. Click here to confirm your credentials: http://paypal.security-verification.xyz/restore-access. Failure to comply will result in account forfeiture. Enter your password and SSN immediately.",
+    },
+    {
+        "id": "phish-002",
+        "label": 1,
+        "type": "Executive Impersonation (Whaling/BEC)",
+        "sender": "ceo.office.direct@gmail.com",
+        "subject": "CONFIDENTIAL: Quick assistance needed with urgent wire transfer",
+        "body": "Are you at your desk right now? I am currently in a board meeting and cannot take calls. I need you to process an urgent wire transfer of $48,500 to our acquisition vendor before 3 PM today. Please treat this with utmost discretion. Reply with your mobile number immediately and confirm when the funds are dispatched. Do not consult accounting until it is done.",
+    },
+    {
+        "id": "phish-003",
+        "label": 1,
+        "type": "Microsoft 365 Password Expiry",
+        "sender": "no-reply@microsoft365-securitycenter.info",
+        "subject": "Security Notice: Your Office 365 password expires in 2 hours",
+        "body": "Your corporate Microsoft Office 365 password will expire today. Keep your current password by reviewing your access settings here: https://login.microsoftonline.portal-auth.cc/keep-password. If you do not update within 2 hours, all incoming mail and SharePoint access will be deactivated immediately. Enter your username, domain, and current active password.",
+    },
+    {
+        "id": "phish-004",
+        "label": 1,
+        "type": "Fake Invoice / Accounting Fraud",
+        "sender": "billing-dispatch@quickbooks-invoicing.online",
+        "subject": "Overdue Invoice INV-94820 - Legal Notice of Debt Collection",
+        "body": "Your payment of $2,349.00 for IT Infrastructure Services is 45 days past due. A collection agency has been notified. View and pay your outstanding balance immediately to avoid court summons: http://192.168.1.182/invoice-pay?id=94820. Provide your corporate credit card number, expiration date, and CVV code on the payment portal.",
+    },
+    {
+        "id": "phish-005",
+        "label": 1,
+        "type": "Package Delivery Lure",
+        "sender": "delivery-alert@fedx-tracking-update.top",
+        "subject": "Delivery Exception: Package #FX-98214 held at regional depot",
+        "body": "FedEx Express: We attempted delivery of your parcel today but recipient address was incomplete. A redelivery fee of $2.95 is required. Track parcel and reschedule: http://fedx-package-tracking.top/redeliver?track=FX-98214. If unpaid within 48 hours, the parcel will be destroyed.",
+    },
+    {
+        "id": "phish-006",
+        "label": 1,
+        "type": "Crypto Giveaway / Wallet Phishing",
+        "sender": "support@metamask-security-vault.net",
+        "subject": "MetaMask Alert: Critical KYC Security Upgrade Required",
+        "body": "In accordance with new international cryptocurrency regulations, all decentralized wallets must complete KYC verification. Failure to verify will freeze your assets. Submit your 12-word recovery seed phrase to unlock your balance: https://metamask-sync-wallet.net/auth. Never share this with anyone else.",
+    },
+    {
+        "id": "phish-007",
+        "label": 1,
+        "type": "Banking Security Alert",
+        "sender": "alerts@chase-secure-banking.club",
+        "subject": "Chase Bank: Fraudulent transaction detected on your debit card",
+        "body": "Chase Alert: An unrecognized charge of $899.99 at Best Buy was attempted. If this was not you, cancel transaction immediately at http://chase-fraud-prevention.club/login. You will be prompted to enter your debit card number, PIN, and one-time passcode.",
+    },
+    {
+        "id": "phish-008",
+        "label": 1,
+        "type": "HR Benefit / Bonus Lure",
+        "sender": "human-resources@company-annualbonus.org",
+        "subject": "Mandatory: Q4 Employee Performance Bonus Survey & Direct Deposit",
+        "body": "All employees are eligible for the Q4 special performance dividend of $1,500. To receive payment before payroll cutoff on Friday, verify your banking information: http://hr-payroll-bonus.org/survey. Confirm your bank account number and routing code.",
+    },
+    {
+        "id": "phish-009",
+        "label": 1,
+        "type": "DocuSign Signature Phish",
+        "sender": "docusign-envelope@secure-electronic-signing.work",
+        "subject": "Please DocuSign: Confidential Termination Agreement.pdf",
+        "body": "Document ready for electronic signature. Sender: Legal & Compliance Department. Document: Mutual Separation Agreement. Review and sign online: https://docusign.secure-electronic-signing.work/view/doc8821. Sign in with your corporate Microsoft email to decrypt document contents.",
+    },
+    {
+        "id": "phish-010",
+        "label": 1,
+        "type": "Google Drive / Shared File Lure",
+        "sender": "notifications@google-drive-sharefile.tk",
+        "subject": "Sarah Jenkins shared a spreadsheet with you: Salary_Review_2026.xlsx",
+        "body": "Sarah Jenkins (sarah.j@enterprise-corp.com) has invited you to edit the following document: Salary_Review_2026.xlsx. Open in Google Sheets: http://drive-google-sharing.tk/sheets/view?file=829140. Please login with your Google workspace credentials to view protected cells.",
+    },
+    {
+        "id": "phish-011",
+        "label": 1,
+        "type": "IRS / Tax Refund Phish",
+        "sender": "irs-refund@internal-revenue-treasury.xyz",
+        "subject": "IRS Notice: Unclaimed federal tax refund of $1,420.50 pending",
+        "body": "Internal Revenue Service: After the annual tax audit, we calculated an excess tax payment. You are entitled to a refund of $1,420.50. Submit your electronic refund claim here: http://irs-tax-refund.internal-revenue-treasury.xyz/claim. Please enter your Social Security Number and debit card details for direct transfer.",
+    },
+    {
+        "id": "phish-012",
+        "label": 1,
+        "type": "IT Helpdesk Ticket Urgent Reset",
+        "sender": "helpdesk-admin@global-it-support.co",
+        "subject": "ACTION REQUIRED: VPN Certificate Revocation in 60 Minutes",
+        "body": "Global IT Support: A vulnerability was discovered in corporate VPN profiles. Your access token is marked for deletion. Re-authenticate via the IT portal immediately to maintain remote access: https://vpn-portal-auth.global-it-support.co/renew. Enter your Active Directory username and corporate password.",
+    },
+    {
+        "id": "phish-013",
+        "label": 1,
+        "type": "Netflix / Streaming Billing Failure",
+        "sender": "support@netflix-account-center.site",
+        "subject": "Your Netflix membership is on hold: Update payment method",
+        "body": "We were unable to process your monthly subscription payment. Your streaming service has been paused. To continue watching without interruption, update your payment details: http://netflix-member-login.site/update. Enter cardholder name, 16-digit card number, CVV and billing address.",
+    },
+    {
+        "id": "phish-014",
+        "label": 1,
+        "type": "Amazon Order Confirmation Fraud",
+        "sender": "orders-support@amazon-customer-verify.biz",
+        "subject": "Amazon.com: Your order #402-991823-112 for Apple iPhone 16 Pro Max",
+        "body": "Thank you for your order! We charged $1,399.00 to your Visa ending in 8192. Shipping to: 442 Elm Street, Dallas, TX. If you did NOT place this order, call our fraud desk or cancel immediately at http://amazon-order-verification.biz/cancel-order. Confirm your full credit card number to authorize cancellation.",
+    },
+    {
+        "id": "phish-015",
+        "label": 1,
+        "type": "Executive Gift Card Request",
+        "sender": "vp.executive.director@outlook.com",
+        "subject": "Urgent Request: Need 5 Apple Gift Cards for Client Meeting",
+        "body": "Hi, I need you to run a quick errand. I am meeting our top prospective client in 30 minutes and need five $100 Apple gift cards as promotional gifts. Can you buy them at the nearest store right now? Scratch the back, take clear photos of the redemption codes, and email them directly to this address. I will reimburse you on Monday expense report.",
+    },
+    {
+        "id": "phish-016",
+        "label": 1,
+        "type": "LinkedIn Recruiter Phishing",
+        "sender": "recruitment@linkedin-talent-network.pw",
+        "subject": "Executive Job Offer: $185,000 Remote Director of Operations",
+        "body": "A hiring manager reviewed your LinkedIn profile and shortlisted you for a senior leadership role. Download confidential interview brief and salary benchmark: http://linkedin-career-portal.pw/job-spec?candidate=8812. Sign in with your professional email and password to decrypt the executive compensation document.",
+    },
+    {
+        "id": "phish-017",
+        "label": 1,
+        "type": "Apple ID Security Lock",
+        "sender": "security@appleid-icloud-verify.online",
+        "subject": "Your Apple ID was used to sign in to iCloud from Moscow, Russia",
+        "body": "Your Apple ID was just used on a Windows PC in Moscow, Russia. If you did not perform this login, your account is at risk of total compromise. Lock your Apple account immediately: https://appleid-recover-account.online/lock. Enter your Apple ID, password, and answers to your three security questions.",
+    },
+    {
+        "id": "phish-018",
+        "label": 1,
+        "type": "Two-Factor Authentication Bypass",
+        "sender": "auth-verify@security-2fa-token.cc",
+        "subject": "CRITICAL: Authenticator App Sync Error - Resync Token",
+        "body": "System Alert: Your Two-Factor Authentication (2FA) seed has desynchronized from the identity server. You must re-pair your authenticator app within 30 minutes. Visit http://security-2fa-token.cc/resync and paste your 6-digit one-time passcode or emergency backup recovery codes.",
+    },
+    {
+        "id": "phish-019",
+        "label": 1,
+        "type": "Slack Workspace Invitation",
+        "sender": "invite@slack-team-workspaces.click",
+        "subject": "You have been invited to join Project Phoenix Slack workspace",
+        "body": "Marcus Vance has invited you to collaborate on Project Phoenix. Join workspace to view confidential project milestones: http://slack-team-workspaces.click/signup?token=77192. Enter your work email and choose a password to gain access to corporate channels.",
+    },
+    {
+        "id": "phish-020",
+        "label": 1,
+        "type": "Antivirus Auto-Renewal Scams",
+        "sender": "billing@geek-squad-totaltech.org",
+        "subject": "Receipt for your Geek Squad Total Protection Renewal: $499.00",
+        "body": "Thank you for renewing your annual Geek Squad 24/7 Total Tech Support. An amount of $499.00 has been debited from your checking account. This transaction will appear on your bank statement as GS-SUPPORT-499. If you wish to dispute or cancel this automatic debit, call our cancellation helpline immediately at +1-888-555-0199 or click http://geek-squad-totaltech.org/refund.",
+    },
+
+    # --- LEGITIMATE / SAFE EMAILS (label: 0) ---
+    {
+        "id": "safe-001",
+        "label": 0,
+        "type": "GitHub Security Advisory",
+        "sender": "notifications@github.com",
+        "subject": "[GitHub] Security advisory: High severity vulnerability in express-session",
+        "body": "GitHub Dependabot detected 1 vulnerable dependency in your repository acme/web-service. The package express-session before version 1.18.0 contains a session fixation vulnerability (CVE-2024-29041). We recommend reviewing the automated pull request #42 and upgrading your package.json. You can view full details in your repository security tab.",
+    },
+    {
+        "id": "safe-002",
+        "label": 0,
+        "type": "Team Meeting & Agenda",
+        "sender": "elena.rostova@techcorp.internal",
+        "subject": "Quarterly Product Architecture Review - Meeting Agenda for Thursday",
+        "body": "Hi everyone, please find the proposed agenda for Thursday's architecture review meeting from 2:00 PM to 3:30 PM EST. We will cover: 1. Microservices migration progress, 2. Database indexing bottlenecks, 3. Open questions regarding latency SLA. Please add any additional talking points to the shared team notes doc before Wednesday afternoon.",
+    },
+    {
+        "id": "safe-003",
+        "label": 0,
+        "type": "AWS Billing Receipt",
+        "sender": "no-reply@amazonwebservices.com",
+        "subject": "Amazon Web Services: Your Monthly Invoice [Account: 8821-4412-9018]",
+        "body": "Greetings from Amazon Web Services. This email is to notify you that your invoice for the billing period of October 1 to October 31 is now available. Your total charges for this billing period are $142.18, billed to your card on file ending in 4012. You can view your detailed itemized breakdown and billing history by signing in to the AWS Management Console.",
+    },
+    {
+        "id": "safe-004",
+        "label": 0,
+        "type": "HR Open Enrollment Notice",
+        "sender": "benefits@enterprise-systems.com",
+        "subject": "Annual Health and Dental Benefits Open Enrollment: Nov 15 - Dec 01",
+        "body": "Dear Colleague, The annual open enrollment period for our corporate health, vision, and dental insurance will run from November 15 through December 1. During this window, you may modify your coverage tiers, add dependents, or enroll in the Health Savings Account (HSA). Detailed plan comparisons and webinars are scheduled next Tuesday at 11:00 AM.",
+    },
+    {
+        "id": "safe-005",
+        "label": 0,
+        "type": "Conference Registration Confirmation",
+        "sender": "info@pycon.org",
+        "subject": "PyCon 2026: Order Confirmation & Ticket Details",
+        "body": "Thank you for registering for PyCon 2026! We look forward to seeing you in Pittsburgh. Your registration code is PY-881290. Badge pickup opens on Wednesday morning at the David L. Lawrence Convention Center. Please retain this email or download your mobile pass in Apple Wallet / Google Wallet. For hotel room block information, visit the official conference portal.",
+    },
+    {
+        "id": "safe-006",
+        "label": 0,
+        "type": "Engineering Status Report",
+        "sender": "david.chen@softwarelab.io",
+        "subject": "Sprint 24 Retrospective & Release Notes v2.4.0",
+        "body": "Team, Sprint 24 closed today with 92% story point completion. Release v2.4.0 is now deployed to the staging environment for QA sign-off. Major highlights include: 1. Reduced p99 API response times by 35ms, 2. Fixed pagination bug in audit logs, 3. Added export to Parquet format. Sprint retrospective is scheduled for tomorrow at 10 AM.",
+    },
+    {
+        "id": "safe-007",
+        "label": 0,
+        "type": "IT Scheduled Maintenance",
+        "sender": "it-operations@corporate.net",
+        "subject": "Scheduled Maintenance: Core Network Switch Upgrade on Saturday 11 PM",
+        "body": "Please be advised that IT Network Engineering will perform scheduled firmware upgrades on our primary datacenter routers this Saturday between 11:00 PM and 2:00 AM EST. During this maintenance window, intermittent VPN disconnections may occur. Internal email and external website hosting will remain unaffected. If you experience issues after 2:30 AM, contact the IT helpdesk.",
+    },
+    {
+        "id": "safe-008",
+        "label": 0,
+        "type": "Google Calendar Invitation",
+        "sender": "calendar-notification@google.com",
+        "subject": "Invitation: Design Sprint Kickoff @ Mon Nov 17, 2026 10am - 11am",
+        "body": "You have been invited to Design Sprint Kickoff. When: Monday Nov 17, 2026 10:00am - 11:00am Eastern Time. Guests: alex@design.io, Priya Patel, Jordan Reed. Meeting link: https://meet.google.com/xyz-qwer-abc. Please RSVP using your calendar client.",
+    },
+    {
+        "id": "safe-009",
+        "label": 0,
+        "type": "University Library Notice",
+        "sender": "circdesk@university.edu",
+        "subject": "Library Notice: Books due in 3 days - Machine Learning: A Probabilistic Perspective",
+        "body": "Dear Borrower, This is a courtesy reminder that the following item borrowed from Main Library is due for return on November 14: 'Machine Learning: A Probabilistic Perspective' (Murphy, Kevin P.). You may renew online through your student library account up to three times provided no other patron has placed a hold.",
+    },
+    {
+        "id": "safe-010",
+        "label": 0,
+        "type": "Airline Flight Confirmation",
+        "sender": "reservations@delta.com",
+        "subject": "Your flight confirmation - San Francisco (SFO) to Seattle (SEA) on Dec 12",
+        "body": "Thank you for choosing Delta Air Lines. Your confirmation code is H8K2LP. Passenger: Alexander Wright. Flight DL 1842 departs SFO at 08:35 AM on Friday, Dec 12, arriving SEA at 10:52 AM. Free carry-on bag is included with your Main Cabin ticket. Check-in opens 24 hours prior to departure via the Fly Delta mobile app or delta.com.",
+    },
+    {
+        "id": "safe-011",
+        "label": 0,
+        "type": "Slack Daily Digest",
+        "sender": "notification@slack.com",
+        "subject": "Your unread messages and mentions in Acme Engineering",
+        "body": "Here is a summary of what you missed while away: 3 mentions in #backend-team and 1 direct message from Sarah Chen regarding the database migration PR. Click here to open your desktop application or web workspace to continue the discussion.",
+    },
+    {
+        "id": "safe-012",
+        "label": 0,
+        "type": "Code Review Notification",
+        "sender": "gitlab@devops.internal",
+        "subject": "Merge Request !184 assigned to you: Implement OAuth2 token refresh logic",
+        "body": "DevOps Bot assigned Merge Request !184 to you for code review. Branch: feature/auth-refresh into main. Author: Maya Lin. 4 files changed, +124 lines, -18 lines. All automated CI unit tests and linters passed successfully. Please review by end of day.",
+    },
+    {
+        "id": "safe-013",
+        "label": 0,
+        "type": "Customer Support Ticket Resolution",
+        "sender": "support@datadoghq.com",
+        "subject": "Support Case #881920: Metric anomaly monitor configuration resolved",
+        "body": "Hi Robert, Our senior technical engineer investigated the metric roll-up behavior you reported. We updated the aggregation window from 5 minutes to 1 minute as recommended in our documentation. The monitor is now firing alerts as expected. Please let us know if you need any further assistance with this case.",
+    },
+    {
+        "id": "safe-014",
+        "label": 0,
+        "type": "Stripe Payout Notification",
+        "sender": "notifications@stripe.com",
+        "subject": "A payout of $3,819.40 is on its way to your bank account",
+        "body": "Stripe automatically deposited $3,819.40 into your Chase checking account ending in 7109. Expected arrival date is tomorrow, November 11. You can download your transaction summary and tax reporting documents from the Stripe Dashboard.",
+    },
+    {
+        "id": "safe-015",
+        "label": 0,
+        "type": "Corporate Town Hall Announcement",
+        "sender": "internal-communications@enterprise.org",
+        "subject": "All-Hands Town Hall: Q4 Results & 2027 Strategic Roadmap - Nov 20",
+        "body": "Dear Team, Please join our Executive Leadership team on Wednesday, November 20 at 1:00 PM EST for our quarterly All-Hands Town Hall. We will review our customer growth figures, celebrate team milestones, and introduce our new green infrastructure initiative. Submit your questions anonymously via Slido.",
+    },
+    {
+        "id": "safe-016",
+        "label": 0,
+        "type": "Academic Paper Review Request",
+        "sender": "editors@ieee-security.org",
+        "subject": "Review Request: Manuscript #SP-2026-0814 for IEEE S&P Conference",
+        "body": "Dear Dr. Wright, In light of your expertise in adversarial machine learning and network intrusion detection, we cordially invite you to review the paper titled 'Graph Neural Networks for Automated Detection of Phishing Clusters'. Reviews are due within 4 weeks. Please confirm your availability by replying to this email.",
+    },
+    {
+        "id": "safe-017",
+        "label": 0,
+        "type": "Software License Renewal Notice",
+        "sender": "licensing@jetbrains.com",
+        "subject": "Your JetBrains All Products Pack subscription renewal receipt",
+        "body": "Thank you for continuing your subscription with JetBrains. Your annual license for All Products Pack has been successfully renewed. License ID: JB-89210-PRO. You can assign and manage active developer seats via the JetBrains Account portal.",
+    },
+    {
+        "id": "safe-018",
+        "label": 0,
+        "type": "Open Source Community Newsletter",
+        "sender": "newsletter@pythonweekly.com",
+        "subject": "Python Weekly - Issue 642: Faster CPython, PyTorch 2.5, and Type Hints",
+        "body": "Welcome to issue 642 of Python Weekly! This week's featured articles include deep dives into JIT compilation in Python 3.13, best practices for structural pattern matching, and building asynchronous data pipelines with Polars and DuckDB.",
+    },
+    {
+        "id": "safe-019",
+        "label": 0,
+        "type": "Employee 1-on-1 Sync Notes",
+        "sender": "marcus.vance@techcorp.internal",
+        "subject": "Follow-up: 1-on-1 Notes & Q1 Professional Development Goals",
+        "body": "Great chatting today! Here is a recap of the goals we agreed on for next quarter: 1. Complete the Certified Kubernetes Administrator (CKA) exam, 2. Lead the telemetry telemetry dashboard refactor, 3. Mentor our two incoming summer engineering interns. Let's touch base again on these items in our bi-weekly sync.",
+    },
+    {
+        "id": "safe-020",
+        "label": 0,
+        "type": "Home Utility Electric Bill",
+        "sender": "e-bill@pge-utilities.com",
+        "subject": "Your PG&E monthly energy statement is ready: $78.42",
+        "body": "Your Pacific Gas and Electric Company bill for electric and natural gas service is now available. Amount due: $78.42. Due date: December 04, 2026. Automatic payment is scheduled for December 02 from your checking account. View your hourly energy usage comparison in your customer portal.",
+    }
+]
+
+# Generate augmented dataset with variations for thorough ML training (100+ samples)
+def get_full_dataset():
+    data = []
+    
+    # Base dataset
+    for item in EMAILS_DATASET:
+        data.append(item.copy())
+        
+    # Additional specialized phishing samples
+    phishing_templates = [
+        ("phish-aug-01", "support@paypa1-resolution.com", "URGENT: Dispute opened against your account - Verify transactions now", "We received a complaint regarding transaction #8912. Your funds have been frozen. Click here http://paypa1-resolution.com/dispute to confirm identity. Enter your debit card PIN and SSN within 12 hours."),
+        ("phish-aug-02", "security@apple-id-cloud-center.xyz", "Your Apple ID has been suspended due to unauthorized access", "Apple Security Notice: An unknown device accessed your photos. Sign in at https://apple-id-cloud-center.xyz/unlock to safeguard your files. Supply your password and answers to security questions immediately."),
+        ("phish-aug-03", "accounting@wire-transfer-express.cc", "Urgent Wire Transfer Instruction - Overdue vendor invoice", "Please execute the wire transfer of $32,400 to the attached bank coordinates today. Strict confidentiality required. Send payment proof immediately to avoid vendor penalties."),
+        ("phish-aug-04", "tax-service@irs-gov-refundportal.club", "IRS Notification: Tax refund approval #99182", "You are eligible for a direct deposit tax refund of $820.00. Access your refund form at http://irs-gov-refundportal.club/claim. Submit your full name, SSN, and banking account numbers."),
+        ("phish-aug-05", "admin@zoom-meeting-recordings.site", "Missed Video Conference Call - Access Voice Recording", "You missed an urgent executive zoom call today at 11:30 AM. Listen to recording: http://zoom-meeting-recordings.site/listen?id=9018. Enter corporate credentials to listen to audio transcript."),
+        ("phish-aug-06", "service@coinbase-security-alerts.work", "Coinbase Warning: Unauthorized withdrawal of 1.45 BTC initiated", "A withdrawal request for 1.45 Bitcoin was placed from IP 94.102.61.8. If you did not authorize this, cancel instantly: https://coinbase-security-alerts.work/cancel. Enter your 2FA Google Authenticator code."),
+        ("phish-aug-07", "delivery@usps-postal-tracking.top", "USPS: Incomplete address for priority parcel #US992144", "Your shipment cannot be delivered due to missing apartment number. Reconfirm shipping details and pay $1.99 redelivery fee: http://usps-postal-tracking.top/confirm. Unclaimed items will be returned."),
+        ("phish-aug-08", "hr-admin@staff-payroll-survey.pw", "Mandatory Employee Wellness Grant Application - Claim $1,000", "All staff members must complete the annual wellness survey to receive their $1,000 corporate stipend. Complete form: http://staff-payroll-survey.pw/grant. Provide routing code and bank account details."),
+        ("phish-aug-09", "helpdesk@corporate-password-expiry.info", "Final Notice: Corporate email access terminates at 5:00 PM today", "Your network credentials have expired. Retain your current password by verifying your account at http://corporate-password-expiry.info/login. You will lose all mailbox access if not done immediately."),
+        ("phish-aug-10", "security@dropbox-sharedfiles.biz", "DocuSign / Dropbox: High Priority Non-Disclosure Agreement for Signature", "A confidential legal document requires your urgent signature. Review file: http://dropbox-sharedfiles.biz/nda?auth=8812. Enter your email password to unlock encrypted PDF."),
+        ("phish-aug-11", "billing@antivirus-norton-security.xyz", "Order Receipt: $399.99 charged for Norton 360 Premium 3-Year Protection", "Your credit card was charged $399.99 for antivirus auto-renewal. If this was unauthorized, contact refund department or click http://antivirus-norton-security.xyz/refund immediately to cancel charge."),
+        ("phish-aug-12", "ceo.urgent.task@mail.com", "Are you available? Quick confidential task needed right now", "I need you to buy 4 target gift cards for an urgent client gift. Send me the card pins right away as I am in client negotiation. Do not call, reply to this email."),
+        ("phish-aug-13", "security@wellsfargo-online-alerts.cc", "Wells Fargo: Suspicious debit card activity detected in Chicago", "We blocked an unusual charge of $649.00 at an electronics retail store. Verify your card at http://wellsfargo-online-alerts.cc/verify to restore transactions. Enter your 16-digit card number and PIN."),
+        ("phish-aug-14", "alerts@facebook-meta-security.top", "Facebook Security: Your page is scheduled for deletion within 24 hours", "Your business page has violated our terms of service regarding copyright. Appeal this decision immediately: http://facebook-meta-security.top/appeal. Failure to submit credentials will result in permanent deletion."),
+        ("phish-aug-15", "support@binance-security-vault.net", "Binance Security Alert: New API key generated from unknown location", "A new read/write API key was generated on your cryptocurrency exchange account. To revoke this authorization, click https://binance-security-vault.net/revoke. Enter your seed phrase and trading password.")
+    ]
+
+    for item in phishing_templates:
+        data.append({
+            "id": item[0],
+            "label": 1,
+            "type": "Phishing",
+            "sender": item[1],
+            "subject": item[2],
+            "body": item[3]
+        })
+
+    # Additional legitimate samples
+    safe_templates = [
+        ("safe-aug-01", "dev-support@docker.com", "Docker Hub: Automated security scan results for your repository", "Docker Scout completed automated vulnerability analysis on your image tags. 0 critical vulnerabilities found. 2 moderate vulnerabilities can be remediated by updating the base image from alpine:3.18 to alpine:3.20. View full details in the Docker dashboard."),
+        ("safe-aug-02", "maya.lin@acme-corp.com", "Design System tokens update: v3.2 release and documentation", "Hi team, we just published version 3.2 of our UI design tokens with improved dark mode contrast and WCAG AA compliance across all button states. Check the documentation on Figma and GitHub."),
+        ("safe-aug-03", "billing@digitalocean.com", "Your DigitalOcean receipt for invoice #DO-1082914", "Thank you for using DigitalOcean. Your droplet and managed database charges of $48.00 for the last billing cycle have been charged to your Visa ending in 9102. PDF invoice attached."),
+        ("safe-aug-04", "jordan.s@acme-corp.com", "Lunch and Learn this Friday: Introduction to Vector Databases", "Hey everyone! Join us in Conference Room B or over Zoom this Friday at noon for a lunch-and-learn session on semantic search and vector embeddings using pgvector. Pizza will be provided."),
+        ("safe-aug-05", "noreply@linkedin.com", "Marcus, congratulations on your work anniversary at Acme Corp", "Today marks 3 years since you joined Acme Corp as Principal Engineer. See congratulations from your network and connections on LinkedIn."),
+        ("safe-aug-06", "support@pagerduty.com", "PagerDuty Incident #4820 resolved: High memory utilization on web-node-03", "Incident #4820 has been marked as resolved by On-Call Engineer Dave Miller. Duration: 14 minutes. Root cause: memory leak in background worker cache. Post-mortem scheduled for tomorrow."),
+        ("safe-aug-07", "alerts@grafana.net", "Grafana Alert [OK]: Kubernetes Cluster CPU usage returned to normal threshold", "The alert rule 'High CPU Consumption' transitioned to OK state at 14:22 UTC. Current CPU utilization is 32% (threshold: 85%). No action required."),
+        ("safe-aug-08", "events@acm.org", "ACM Communications: November 2026 issue published online", "The November issue of Communications of the ACM is now live. Articles feature breakthroughs in post-quantum cryptography, verified compiler design, and responsible AI safety guidelines."),
+        ("safe-aug-09", "no-reply@medium.com", "Stories for Alexander: Cybersecurity, Rust performance, and System Design", "Here are stories hand-picked for your reading list based on topics you follow: Understanding zero-knowledge proofs in modern privacy networks, and Building resilient event-driven architectures with Kafka."),
+        ("safe-aug-10", "reception@dentalcare.com", "Appointment confirmation: Routine dental cleaning on Tuesday Nov 18", "Dear Alexander, this email confirms your upcoming dental cleaning and check-up appointment with Dr. Stevens on Tuesday, November 18 at 9:30 AM. If you need to reschedule, please give us 24 hours notice."),
+        ("safe-aug-11", "billing@cloudflare.com", "Cloudflare Monthly Statement: Zero Trust & DNS Services", "Your monthly subscription for Cloudflare Zero Trust and domain registration has processed successfully for $20.00. You can download your official tax invoice directly from the dashboard."),
+        ("safe-aug-12", "recruiting@techsummit.io", "Call for Speakers: International Cybersecurity Conference 2027", "Submissions are open for our 2027 conference track on Offensive & Defensive AI Security. Submit your talk abstract and speaker bio before January 15 for consideration by the review committee."),
+        ("safe-aug-13", "service@homedepot.com", "Your in-store pickup order #WD881290 is ready", "Good news! Your order of LED floodlights and cable management ties is ready for pickup at our San Carlos store. Head to the customer service counter with order barcode #WD881290."),
+        ("safe-aug-14", "noreply@zoom.us", "Zoom Cloud Recording available: Sprint Planning Meeting", "Your cloud recording from Sprint Planning Meeting on November 10 is now processed and available for viewing. Passcode is embedded in the viewing link."),
+        ("safe-aug-15", "billing@spotify.com", "Your Spotify Premium family subscription receipt", "We've received your monthly payment of $16.99 for Spotify Premium Family. Keep enjoying ad-free music listening and offline downloads across all linked accounts.")
+    ]
+
+    for item in safe_templates:
+        data.append({
+            "id": item[0],
+            "label": 0,
+            "type": "Legitimate",
+            "sender": item[1],
+            "subject": item[2],
+            "body": item[3]
+        })
+
+    return data

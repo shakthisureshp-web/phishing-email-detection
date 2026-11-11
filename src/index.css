@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --color-cyber-navy: #080d1a;
+  --color-cyber-surface: #0f172a;
+  --color-cyber-border: #1e293b;
+  --color-neon-green: #10b981;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #080d1a;
+  color: #f1f5f9;
+}
+
+/* Custom scrollbars for clean dashboard panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

@@ -1,0 +1,149 @@
+{
+  "model_type": "Logistic Regression with TF-IDF Vectorizer",
+  "benchmark_model": "Multinomial Naive Bayes",
+  "training_samples": 52,
+  "test_samples": 18,
+  "total_dataset_size": 70,
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "benchmark_nb_accuracy": 0.9444,
+    "benchmark_nb_f1": 0.9474
+  },
+  "confusion_matrix": {
+    "true_negatives": 9,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_positives": 9,
+    "total_tested": 18
+  },
+  "top_phishing_features": [
+    {
+      "feature": "http",
+      "weight": 0.7205
+    },
+    {
+      "feature": "password",
+      "weight": 0.5715
+    },
+    {
+      "feature": "security",
+      "weight": 0.5342
+    },
+    {
+      "feature": "immediately",
+      "weight": 0.5288
+    },
+    {
+      "feature": "enter",
+      "weight": 0.525
+    },
+    {
+      "feature": "urgent",
+      "weight": 0.5021
+    },
+    {
+      "feature": "access",
+      "weight": 0.4731
+    },
+    {
+      "feature": "refund",
+      "weight": 0.4542
+    },
+    {
+      "feature": "xyz",
+      "weight": 0.4092
+    },
+    {
+      "feature": "https",
+      "weight": 0.3846
+    },
+    {
+      "feature": "number",
+      "weight": 0.3795
+    },
+    {
+      "feature": "verify",
+      "weight": 0.371
+    },
+    {
+      "feature": "transfer",
+      "weight": 0.3679
+    },
+    {
+      "feature": "apple",
+      "weight": 0.3607
+    },
+    {
+      "feature": "confidential",
+      "weight": 0.3603
+    }
+  ],
+  "top_legitimate_features": [
+    {
+      "feature": "com",
+      "weight": 0.578
+    },
+    {
+      "feature": "acme",
+      "weight": 0.4635
+    },
+    {
+      "feature": "november",
+      "weight": 0.4616
+    },
+    {
+      "feature": "conference",
+      "weight": 0.4151
+    },
+    {
+      "feature": "review",
+      "weight": 0.376
+    },
+    {
+      "feature": "2026",
+      "weight": 0.3631
+    },
+    {
+      "feature": "acme corp",
+      "weight": 0.3415
+    },
+    {
+      "feature": "18",
+      "weight": 0.3415
+    },
+    {
+      "feature": "sprint",
+      "weight": 0.3272
+    },
+    {
+      "feature": "issue",
+      "weight": 0.3136
+    },
+    {
+      "feature": "web",
+      "weight": 0.3093
+    },
+    {
+      "feature": "jetbrains",
+      "weight": 0.2941
+    },
+    {
+      "feature": "open",
+      "weight": 0.2803
+    },
+    {
+      "feature": "session",
+      "weight": 0.2784
+    },
+    {
+      "feature": "pickup",
+      "weight": 0.2755
+    }
+  ],
+  "vocabulary_size": 1200,
+  "generated_at": "2026-11-11T05:11:57.412934"
+}
